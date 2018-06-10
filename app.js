@@ -44,7 +44,6 @@ app.get('/auth/google/callback',
 )
 
 app.get('/api/auth', function (req, res) {
-  console.log(req)
   res.json(req.user)
 })
 
