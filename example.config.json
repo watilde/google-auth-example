@@ -1,0 +1,7 @@
+{
+  "google": {
+    "clientID": "<>",
+    "clientSecret": "<>",
+    "callbackURL": "<>"
+  }
+}
