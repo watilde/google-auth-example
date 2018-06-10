@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
@@ -32,7 +33,7 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.resolve(__dirname, '/public')))
 
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['email profile'] }))
@@ -42,12 +43,12 @@ app.get('/auth/google/callback',
   (req, res) => { res.redirect('/') }
 )
 
-app.get('/api/auth', function(req, res) {
+app.get('/api/auth', function (req, res) {
   console.log(req)
   res.json(req.user)
 })
 
-app.get('/logout', function(req, res) {
+app.get('/logout', function (req, res) {
   req.logout()
   res.redirect('/')
 })
